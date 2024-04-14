@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="IntroScene.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Items.h" />
   </ItemGroup>
