@@ -12,63 +12,66 @@ srand((unsigned)time(NULL));
 int playerattack() {
     int roll = 0;
     roll = rand() % 6 + 1;
-    if (Player.Strength >= 40) {
+    if (Player.getStrength() >= 40) {
         if (roll >= 2) {
-            Boss.Health - 10;
+            Boss.setHealth(90);
         }
 
         else (roll < 2) {
-            Boss.Health - 20;
+            Boss.setHealth(80);
         }
-    }
-    else (Player.Strength < 40) {
+    };
+    else (Player.getStrength() < 40) {
         if (roll >= 4) {
-            Boss.Health - 10;
+            Boss.Health(90);
         }
 
         else (roll < 4) {
-            Boss.Health - 20;
+            Boss.setHealth(80);
         }
-    }
-    return Boss.Health;
-}
+    };
+
+    return Boss.getHealth();
+};
 
 int enemyattack() {
     int roll = 0;
     roll = rand() % 6 + 1;
-    if (Boss.Strength >= 50) {
+    if (Boss.getStrength() >= 50) {
         if (roll >= 2) {
-            Player.Health - 10;
+            Player.setHealth(90);
 
         }
         else (roll < 2) {
-            Player.Health - 20;
+            Player.setHealth(80);
         }
-    }
-        else (Boss.Strength = < 50) {
-            if (roll >= 4) {
-                Player.Health - 10;
-            }
-            else (roll < 4) {
-                Player.Health - 20;
-            }
+    };
+    else (Boss.getStrength() = < 50) {
+        if (roll >= 4) {
+            Player.setHealth(90);
         }
-}
+        else (roll < 4) {
+            Player.setHealth(80);
+        }
+    };
+    return Player.getHealth();
+};
 
-int enemyheal(){
-	if (Boss.Health < 10) {
-        int roll = 0; 
+int enemyheal() {
+    if (Boss.getHealth() < 10) {
+        int roll = 0;
         roll = rand() % 6 + 1;
 
-        if (roll > 4) { 
-            10 + Boss.Health;
+        if (roll > 4) {
+            10 + Boss.setHealth();
         }
-	}
-}
+    };
+    return Boss.getHealth();
+};
 
-int enemyflee(){
+int enemyflee() {
 
-}
+};
 
 int Fighting() {
 
