@@ -1,10 +1,11 @@
+#pragma once
 #include <iostream>
 using namespace std; 
 
-class Boss {
-public:
-	int health = 100;
-	int strength = 100;
-	int intel = 100;
+Class Boss() {
+Public:
+	int Health = 100;
+	int Strength = 100;
+	int Intel = 100;
 }
 

@@ -1,11 +1,10 @@
 #pragma once
 #include <iostream>
-
 using namespace std; 
 
-Class PlayerStats() {
+Class Player() {
 Public: 
-	health = 100; 
-	strength = 100;
-	intel = 100; 
+	int Health = 100; 
+	int Strength = 100;
+	int Intel = 100; 
 }
