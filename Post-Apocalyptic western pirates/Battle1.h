@@ -7,6 +7,7 @@
 #include <random>
 
 using namespace std; 
+srand((unsigned)time(NULL));
 
 int playerattack() {
     int roll = 0;
@@ -29,7 +30,7 @@ int playerattack() {
             Boss.Health - 20;
         }
     }
-    
+    return Boss.Health;
 }
 
 int enemyattack() {
@@ -71,4 +72,4 @@ int enemyflee(){
 
 int Fighting() {
 
-}
+};

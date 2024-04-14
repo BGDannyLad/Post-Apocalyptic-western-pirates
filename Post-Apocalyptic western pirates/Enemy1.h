@@ -7,5 +7,5 @@ Public:
 	int Health = 100;
 	int Strength = 100;
 	int Intel = 100;
-}
+};
 

@@ -3,8 +3,8 @@
 using namespace std; 
 
 Class Player() {
-Public: 
-	int Health = 100; 
+Public:
+	int Health = 100;
 	int Strength = 100;
-	int Intel = 100; 
-}
+	int Intel = 100;
+};
