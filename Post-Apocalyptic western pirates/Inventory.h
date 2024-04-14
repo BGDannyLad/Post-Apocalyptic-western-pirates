@@ -1,49 +1,35 @@
 #pragma once
 #include "items.h"
-class linked_list
+class inventory
 {
 private:
     item* head, * tail, * place;
 public:
-    linked_list()
+    inventory()
     {
-        head = NULL;
-        tail = NULL;
-        place = NULL;
+        item dagger(NULL, NULL, 0,1);
+        head = &dagger;
+        item wigglyFish(NULL, &dagger, 0, 2);
+        tail = &wigglyFish;
+        place = &dagger;
     }
     item* search(int key) {
         item* find = head;
-        while (find->getNext() != NULL and find->getKey() != key) {
+        while (find->getNext() != NULL and find->getID() != key) {
             find = find->getNext();
         }
-        if (find->getKey() == key) {
+        if (find->getID() == key) {
             return find;
         }
         else {
             return NULL;
         }
     }
-    void push_back(item* nodude, int n)
-    {
-        nodude->setData(n);
-        nodude->setNext(NULL);
-
-        if (head == NULL)
-        {
-            place = nodude;
-            head = nodude;
-            tail = nodude;
-            nodude->setLast(NULL);
-        }
-        else
-        {
-            tail->setNext(nodude);
-            nodude->setLast(tail);
-            tail = tail->getNext();
-            tail->setNext(NULL);
-            place = head;
-        }
+    void addItem(int id, int num){
+        search(id)->addCount(num);
     }
+
+
     item* getCurrent() {
         return place;
     }
@@ -53,68 +39,17 @@ public:
     item* getFirst() {
         return head;
     }
-    void pushFront(item* front, int n) {
-        head->setLast(front);
-        front->setNext(head);
-        front->setData(n);
-        head = front;
-        front->setLast(NULL);
-        place = front;
-    }
-    item* deleteAt(item* current) {
-        place = current;
-        if (place == tail) {
-            item* temp = tail->getLast();
-            item* oldTail = tail;
-            tail = temp;
-            tail->setNext(NULL);
-            place = tail;
-            return oldTail;
-        }
-        else if (place == head) {
-            item* temp = head->getNext();
-            item* oldHead = head;
-            temp->setLast(NULL);
-            head = temp;
-            place = head;
-            return oldHead;
-        }
-        else {
-            item* del = place;
-            item* prev = place->getLast();
-            place = place->getNext();
-            prev->setNext(place);
-            place->setLast(prev);
-            return del;
-        }
-    }
-    item* pop_back() {
-        item* oldTail = tail;
-        item* nwTail = tail->getLast();
-        tail = nwTail;
-        tail->setNext(NULL);
-        place = tail;
-        return oldTail;
-    }
-    item* pop_front() {
-        item* oldHead = head;
-        item* nwHead = head->getNext();
-        head = nwHead;
-        nwHead->setLast(NULL);
-        return oldHead;
-        place = nwHead;
-    }
     void display() {
         item* gasgasgas = head;
         while (gasgasgas != NULL) {
-            cout << "Data: " << gasgasgas->getData() << ", key: " << gasgasgas->getKey() << ", next: " << gasgasgas->getNext() << endl;
+            std::cout << "ID: " << gasgasgas->getID() << ", num: " << gasgasgas->getCount() << ", next: " << gasgasgas->getNext() << std::endl;
             if (gasgasgas->getNext() == NULL) {
-                cout << "End of nodes at slot." << endl;
+                std::cout << "End of nodes at slot." << std::endl;
             }
             gasgasgas = gasgasgas->getNext();
         }
     }
-    ~linked_list() {
+    ~inventory() {
         item* current = head;
         while (current != NULL) {
             item* next = current->getNext();
@@ -122,26 +57,4 @@ public:
             current = next;
         }
     }
-};
-
-class inv {
-private:
-	item* weapon;
-	item* secondary;
-	item* Potion;
-	item* Passive;
-public:
-	void setWeapon(item* wepawn) {
-		weapon = wepawn;
-	}
-	void setSecondary(item* segond) {
-		secondary = segond;
-	}
-	void setPotion(item* wepawn) {
-
-	}
-	void additem(int id, int index) {
-
-	}
-
 };

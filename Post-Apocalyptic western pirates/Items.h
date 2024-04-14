@@ -1,9 +1,6 @@
 #pragma once
 #include <iostream>
 
-
-
-
 class item {
 private:
 	item* next;
@@ -12,6 +9,12 @@ private:
 	int itemID;
 
 public:
+	item(item* nxt, item* lst, int cnt, int id) {
+		next = nxt;
+		last = lst;
+		count = cnt;
+		itemID = id;
+	}
 	int getCount(){
 		return count;
 	}
@@ -30,4 +33,21 @@ public:
 	void setID(int n) {
 		itemID = n;
 	}
+	void addCount(int n) {
+		if ((count + n) >= 0) {
+			count = count + n;
+		}
+		
+	}
+	void useitem() {
+		if (itemID == 1) {
+			std::cout << "Used dagger" << std::endl;
+		}
+		else if (itemID == 2) {
+			std::cout << "used wiggly fish";
+		}
+	}
+
 };
+//1 is basic dagger for now
+//2 is wobbly fish
