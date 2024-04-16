@@ -8,4 +8,6 @@ int main() {
 	test.display();
 	test.addItem(1, 1);
 	test.display();
+	test.addItem(2, 10);
+	test.display();
 }

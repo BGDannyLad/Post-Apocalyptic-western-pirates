@@ -3,15 +3,17 @@
 class inventory
 {
 private:
-    item* head, * tail, * place;
+    item* head;
+    item* tail;
+    item* place;
 public:
     inventory()
     {
-        item dagger(NULL, NULL, 0,1);
-        head = &dagger;
-        item wigglyFish(NULL, &dagger, 0, 2);
-        tail = &wigglyFish;
-        place = &dagger;
+        head = new item(nullptr, nullptr, 0, 1);
+        tail = new item(nullptr, nullptr, 0, 2);
+        head->setNext(tail);
+        tail->setLast(head);
+        place = head;
     }
     item* search(int key) {
         item* find = head;
@@ -41,20 +43,27 @@ public:
     }
     void display() {
         item* gasgasgas = head;
-        while (gasgasgas != NULL) {
-            std::cout << "ID: " << gasgasgas->getID() << ", num: " << gasgasgas->getCount() << ", next: " << gasgasgas->getNext() << std::endl;
-            if (gasgasgas->getNext() == NULL) {
-                std::cout << "End of nodes at slot." << std::endl;
+        while (gasgasgas != nullptr) {
+            if (gasgasgas->getCount() > 0) {
+                std::cout << "You have " << gasgasgas->getCount() << " of " << gasgasgas->getID() << std::endl;
             }
             gasgasgas = gasgasgas->getNext();
         }
+        
     }
-    ~inventory() {
+    ~inventory()
+    {
+        // Release memory allocated for each item in the inventory
         item* current = head;
-        while (current != NULL) {
-            item* next = current->getNext();
-            delete current;
-            current = next;
+        while (current != nullptr)
+        {
+            item* next = current->getNext(); // Store next pointer before deleting current
+            delete current; // Delete the current item
+            current = next; // Move to the next item
         }
+        // Set pointers to nullptr to avoid dangling pointers
+        head = nullptr;
+        tail = nullptr;
+        place = nullptr;
     }
 };

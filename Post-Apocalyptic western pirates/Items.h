@@ -24,8 +24,14 @@ public:
 	item* getNext() {
 		return next;
 	}
+	void setNext(item* nxt) {
+		next = nxt;
+	}
 	item* getLast() {
 		return last;
+	}
+	void setLast(item* lst) {
+		last = lst;
 	}
 	void setCount(int n){
 		count = n;
