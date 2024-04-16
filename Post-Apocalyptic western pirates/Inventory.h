@@ -35,6 +35,9 @@ public:
     item* getCurrent() {
         return place;
     }
+    void setCurrent(item* cur) {
+        place = cur;
+    }
     item* getTail() {
         return tail;
     }

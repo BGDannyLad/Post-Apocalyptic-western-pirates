@@ -127,9 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="IntroScene.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Items.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Center.cpp" />
