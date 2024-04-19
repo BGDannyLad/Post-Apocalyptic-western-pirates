@@ -16,6 +16,7 @@ public:
 		smarts = intelligence;
 		dexterity = dex;
 		seduction = attractiveness;		
+		playerInv = inv;
 	}
 	void setHealth(int h) {
 		health = h;
@@ -47,10 +48,28 @@ public:
 	int getSeduction() {
 		return seduction;
 	}
-	void changeHand(item* newhand) {
-		playerInv->setCurrent(newhand);
+	void changeHand(int id) {
+		item* swapto = playerInv->search(id);
+		if (swapto == NULL) {
+			std::cout << "item does not exist." << std::endl;
+		}
+		else if (swapto->getCount() <= 0) {
+			std::cout << "You dont have the target item." << std::endl;
+		}
+		else {
+			playerInv->setCurrent(swapto);
+		}
+	}
+	item* getHand() {
+		return playerInv->getCurrent();
 	}
 	void useHand() {
-		playerInv->getCurrent()->useitem()
+		playerInv->getCurrent()->useitem();
+	}
+	inventory* getInventory() {
+		return playerInv;
+	}
+	void setInventory(inventory* newInv) {
+		playerInv = newInv;
 	}
 };
