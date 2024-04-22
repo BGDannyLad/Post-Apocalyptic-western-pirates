@@ -18,5 +18,4 @@ int main() {
 	playa.changeHand(2);
 	cout << "Current hand: " << playa.getHand()->getID() << endl;
 	playa.useHand();
-
 }
