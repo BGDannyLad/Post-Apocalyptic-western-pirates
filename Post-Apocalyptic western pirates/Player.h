@@ -7,16 +7,21 @@
 
 class Player {
 private:
-	int health, strength, smarts, dexterity, seduction;
+	int health, strength, smarts, dexterity, seduction, money, type;
 	inventory* playerInv;
 public:
-	Player(int vitality, int muscles, int intelligence, int dex, int attractiveness, inventory* inv) {
+	Player(int vitality, int muscles, int intelligence, int dex, int attractiveness, int mony, int typ, inventory* inv) {
 		health = vitality;
 		strength = muscles;
 		smarts = intelligence;
 		dexterity = dex;
-		seduction = attractiveness;		
+		seduction = attractiveness;
+		money = mony;
+		type = typ;
 		playerInv = inv;
+	}
+	int getType() {
+		return type;
 	}
 	void setHealth(int h) {
 		health = h;
@@ -32,6 +37,12 @@ public:
 	}
 	void setSeduction(int s) {
 		seduction = s;
+	}
+	void addMoney(int dollah) {
+		money = money + dollah;
+	}
+	int getMoney() {
+		return money;
 	}
 	int getHealth() {
 		return health;
@@ -63,8 +74,14 @@ public:
 	item* getHand() {
 		return playerInv->getCurrent();
 	}
-	void useHand() {
-		playerInv->getCurrent()->useitem();
+	void useHand(Player* target) {
+		int id = playerInv->getCurrent()->getID();
+		if (id == 1) {
+			std::cout << "Used dagger" << std::endl;
+		}
+		else if (id == 2) {
+			std::cout << "used wiggly fish";
+		}
 	}
 	inventory* getInventory() {
 		return playerInv;
