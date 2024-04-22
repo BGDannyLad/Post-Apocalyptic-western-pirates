@@ -7,7 +7,6 @@ private:
 	item* last;
 	int count;
 	int itemID;
-
 public:
 	item(item* nxt, item* lst, int cnt, int id) {
 		next = nxt;
@@ -45,14 +44,7 @@ public:
 		}
 		
 	}
-	void useitem() {
-		if (itemID == 1) {
-			std::cout << "Used dagger" << std::endl;
-		}
-		else if (itemID == 2) {
-			std::cout << "used wiggly fish";
-		}
-	}
+	
 
 };
 //1 is basic dagger for now
