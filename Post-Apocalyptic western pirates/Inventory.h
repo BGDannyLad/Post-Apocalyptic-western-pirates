@@ -29,6 +29,7 @@ public:
     }
     void addItem(int id, int num){
         search(id)->addCount(num);
+        place = search(id);
     }
 
 
