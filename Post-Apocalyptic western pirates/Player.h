@@ -2,50 +2,33 @@
 #include <iostream>
 #include "Inventory.h"
 #include "Items.h"
-#include "Entity.h"
+#include "Enemy.h"
 
 
 class Player {
 private:
-	int health, strength, smarts, dexterity, seduction, money, type, maxHealth;
+	int health, strength, smarts, dexterity, seduction, money, maxHealth;
 	inventory* playerInv;
-	Player* next;
-	Player* last;
 	string name;
 public:
-	Player(int vitality, int muscles, int intelligence, int dex, int attractiveness, int mony, int typ, int maxH,string nme, inventory* inv) {
-		health = vitality;
+	Player(int muscles, int intelligence, int dex, int attractiveness, int mony, int maxH,string nme, inventory* inv) {
+		health = maxH;
 		strength = muscles;
 		smarts = intelligence;
 		dexterity = dex;
 		seduction = attractiveness;
 		money = mony;
-		type = typ;
 		maxHealth = maxH;
 		playerInv = inv;
 		name = nme;
 	}
-	Player* getNext() {
-		return next;
-	}
-	Player* setName(string nam) {
+	void setName(string nam) {
 		name = nam;
 	}
 	string getName() {
 		return name;
 	}
-	void setNext(Player* nxt) {
-		next = nxt;
-	}
-	Player* getLast() {
-		return last;
-	}
-	void setLast(Player* lst) {
-		last = lst;
-	}
-	int getType() {
-		return type;
-	}
+
 	void setHealth(int h) {
 		health = h;
 	}

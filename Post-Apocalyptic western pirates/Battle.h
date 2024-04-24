@@ -3,32 +3,87 @@
 #include <iostream>
 #include "Inventory.h"
 #include <string>
+#include "Enemy.h"
 using namespace std;
 #include<cstdlib>
 
-
-Player* generateEnemy(int type, int lvl) {
+//strength, smarts, dexterity, type, maxHealth;
+Enemy* generateEnemy(int type, int lvl) {
     const char* enemy1Names[10] = { "Salty Sam", "Blackeyed Willy", "Dehydrake longnails", "Arineus Seascout", "Big time bobby", "Little time lester", "Sally one-limb", "Johnney no-limb", "Perry plat-y-plus", "Grandma Noteeth"}; //pirates
     const char* enemy2Names[10] = { "Gratinspak Dugelov", "Nikolai Nikitich Ivanov", "Svetlana Pavlovna Orlovsky", "Boris Alexandrovich Kuznetsov", "Anastasia Dmitriyevna Sokolova", "Mikhail Petrovich Romanov", "Yelena Ivanovna Smirnova", "Ekaterina Sergeyevna Petrova", "Igor Sergeyevich Petrov", "Pavel Nikolayevich Orlov"}; //corporate
     const char* enemy3Names[10] = { "Just a lil guy", "Smol", "Shawty", "Plum", "Squeezh", "pum", "blinky", "yug burtman", "a literal jawa", "wampa"}; //alien
     srand((unsigned)time(NULL));
+    int randName;
+    string name;
+    int strength;//base stats
+    int dexterity;
+    int intelligence;
+    int maxHealth;
+    int baseStat = lvl;
+    if (type == 1) {//pirates
+        randName = (rand() % 11) - 1;
+        name = enemy1Names[randName];
+        strength = 4;//base stats
+        dexterity = 2;
+        intelligence = 1;
+        maxHealth;
+        for (int i = 0; i < lvl + 1; i++) {
+            int randhealth = (rand() % 10);
+            maxHealth = maxHealth + randhealth;
+        }
+        strength = strength + lvl;
+        dexterity = dexterity + lvl;
+        intelligence = intelligence + lvl;
+    }
+    else if (type == 2) {//corporate
+        randName = (rand() % 11) - 1;
+        name = enemy2Names[randName];
+        strength = 2;//base stats
+        dexterity = 1;
+        intelligence = 4;
+        maxHealth;
+        for (int i = 0; i < lvl + 1; i++) {
+            int randhealth = (rand() % 10);
+            maxHealth = maxHealth + randhealth;
+
+        }
+        strength = strength + lvl;
+        dexterity = dexterity + lvl;
+        intelligence = intelligence + lvl;
+    }
+    else {//alien
+        randName = (rand() % 11) - 1;
+        name = enemy3Names[randName];
+        strength = 4;//base stats
+        dexterity = 2;
+        intelligence = 1;
+        maxHealth;
+        for (int i = 0; i < lvl + 1; i++) {
+            int randhealth = (rand() % 10);
+            maxHealth = maxHealth + randhealth;
+        }
+        strength = strength + lvl;
+        dexterity = dexterity + lvl;
+        intelligence = intelligence + lvl;
+    }
+    inventory* things = new inventory();
+    //add code to generate random inventories based on type and level
+    things->addItem(1, 1);
+    Enemy* averageJoe = new Enemy(strength, intelligence, dexterity, type, maxHealth, name, things);
+    return averageJoe;
 }
+//Enemy(int muscles, int intelligence, int dex, int mony, int typ, int maxH, string nme, inventory* inv)
 class battle
 {
 private:
-    Player* head, * tail, * turn;
+    Player* playa;
+    Enemy* head, * tail, * turn;
     int numEnemies, enemyType, enemyLvl;
 public:
-    battle(Player* playa, int numEnems, int enemyTyp, int nemyLvl)
-    {
-        head = NULL;
-        tail = NULL;
-        turn = NULL;
-    }
     
-    void push_back(Player* nodude, int n)
+    
+    void push_back(Enemy* nodude)
     {
-        nodude->setData(n);
         nodude->setNext(NULL);
 
         if (head == NULL)
@@ -47,75 +102,83 @@ public:
             turn = head;
         }
     }
-    Player* getCurrent() {
+    Enemy* getCurrent() {
         return turn;
     }
-    Player* getTail() {
+    Enemy* getTail() {
         return tail;
     }
-    Player* getFirst() {
+    Enemy* getFirst() {
         return head;
     }
-    void pushFront(Player* front, int n) {
+    void pushFront(Enemy* front) {
         head->setLast(front);
         front->setNext(head);
-        front->setData(n);
         head = front;
         front->setLast(NULL);
         turn = front;
     }
-    Player* deleteAt(Player* current) {
+    Enemy* deleteAt(Enemy* current) {
         turn = current;
         if (turn == tail) {
-            Player* temp = tail->getLast();
-            Player* oldTail = tail;
+            Enemy* temp = tail->getLast();
+            Enemy* oldTail = tail;
             tail = temp;
             tail->setNext(NULL);
             turn = tail;
             return oldTail;
         }
         else if (turn == head) {
-            Player* temp = head->getNext();
-            Player* oldHead = head;
+            Enemy* temp = head->getNext();
+            Enemy* oldHead = head;
             temp->setLast(NULL);
             head = temp;
             turn = head;
             return oldHead;
         }
         else {
-            Player* del = turn;
-            Player* prev = turn->getLast();
+            Enemy* del = turn;
+            Enemy* prev = turn->getLast();
             turn = turn->getNext();
             prev->setNext(turn);
             turn->setLast(prev);
             return del;
         }
     }
-    Player* pop_back() {
-        Player* oldTail = tail;
-        Player* nwTail = tail->getLast();
+    Enemy* pop_back() {
+        Enemy* oldTail = tail;
+        Enemy* nwTail = tail->getLast();
         tail = nwTail;
         tail->setNext(NULL);
         turn = tail;
         return oldTail;
     }
-    Player* pop_front() {
-        Player* oldHead = head;
-        Player* nwHead = head->getNext();
+    Enemy* pop_front() {
+        Enemy* oldHead = head;
+        Enemy* nwHead = head->getNext();
         head = nwHead;
         nwHead->setLast(NULL);
         return oldHead;
         turn = nwHead;
     }
     void display() {
-        Player* gasgasgas = head;
+        Enemy* gasgasgas = head;
         while (gasgasgas != NULL) {
-            cout << "Data: " << gasgasgas->getData() << ", key: " << gasgasgas->getKey() << ", next: " << gasgasgas->getNext() << endl;
+            gasgasgas->displayStuff();
             if (gasgasgas->getNext() == NULL) {
                 cout << "End of nodes at slot." << endl;
             }
             gasgasgas = gasgasgas->getNext();
         }
     }
-
+    battle(Player* plaa, int numEnems, int enemyTyp, int nemyLvl)
+    {
+        head = NULL;
+        tail = NULL;
+        turn = NULL;
+        for (int i = 0; i < numEnems + 1; i++) {
+            push_back(generateEnemy(enemyTyp, nemyLvl));
+        }
+        playa = plaa;
+    }
 };
