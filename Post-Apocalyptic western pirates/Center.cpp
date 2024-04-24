@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 	inventory test;
-	Player playa(2000, 1000000, 1000, 100, 999999, 20, 0, &test);
+	Player playa(2000, 1000000, 1000, 100, 999999, 20, 0, 2000, &test);
 	if (openMenu(1) == 1) {
 		playa.getInventory()->addItem(1, 1);
 	}
