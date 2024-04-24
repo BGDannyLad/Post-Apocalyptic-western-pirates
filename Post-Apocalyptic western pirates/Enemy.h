@@ -85,7 +85,7 @@ public:
 	item* getHand() {
 		return EnemyInv->getCurrent();
 	}
-	void useHand(Player* target) {
+	/*void useHand(Player* target) {
 		int id = EnemyInv->getCurrent()->getID();
 		if (id == 1) {
 			std::cout << "Used dagger" << std::endl;
@@ -93,7 +93,7 @@ public:
 		else if (id == 2) {
 			std::cout << "used wiggly fish";
 		}
-	}
+	}*/
 	inventory* getInventory() {
 		return EnemyInv;
 	}

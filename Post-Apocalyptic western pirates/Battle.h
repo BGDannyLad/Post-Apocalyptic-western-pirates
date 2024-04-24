@@ -12,13 +12,13 @@ Enemy* generateEnemy(int type, int lvl) {
     const char* enemy1Names[10] = { "Salty Sam", "Blackeyed Willy", "Dehydrake longnails", "Arineus Seascout", "Big time bobby", "Little time lester", "Sally one-limb", "Johnney no-limb", "Perry plat-y-plus", "Grandma Noteeth"}; //pirates
     const char* enemy2Names[10] = { "Gratinspak Dugelov", "Nikolai Nikitich Ivanov", "Svetlana Pavlovna Orlovsky", "Boris Alexandrovich Kuznetsov", "Anastasia Dmitriyevna Sokolova", "Mikhail Petrovich Romanov", "Yelena Ivanovna Smirnova", "Ekaterina Sergeyevna Petrova", "Igor Sergeyevich Petrov", "Pavel Nikolayevich Orlov"}; //corporate
     const char* enemy3Names[10] = { "Just a lil guy", "Smol", "Shawty", "Plum", "Squeezh", "pum", "blinky", "yug burtman", "a literal jawa", "wampa"}; //alien
-    srand((unsigned)time(NULL));
-    int randName;
+    
+    int randName = 0;
     string name;
     int strength;//base stats
-    int dexterity;
-    int intelligence;
-    int maxHealth;
+    int dexterity =0;
+    int intelligence = 0;
+    int maxHealth = 0;
     int baseStat = lvl;
     if (type == 1) {//pirates
         randName = (rand() % 11) - 1;
@@ -161,7 +161,7 @@ public:
         return oldHead;
         turn = nwHead;
     }
-    void display() {
+    void battleInfo() {
         Enemy* gasgasgas = head;
         while (gasgasgas != NULL) {
             gasgasgas->displayStuff();
@@ -173,6 +173,7 @@ public:
     }
     battle(Player* plaa, int numEnems, int enemyTyp, int nemyLvl)
     {
+        srand((unsigned)time(NULL));
         head = NULL;
         tail = NULL;
         turn = NULL;
