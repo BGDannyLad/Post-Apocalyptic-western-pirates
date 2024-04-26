@@ -2,7 +2,7 @@
 #include "Items.h"
 #include "Inventory.h"
 #include "Player.h"
-//#include "Menu.h"
+#include "Menu.h"
 #include "IntroScene.h"
 #include "Battle.h"
 using namespace std;
@@ -28,6 +28,6 @@ int main() {
 	playa.changeHand(1);
 	cout << "Current hand: " << playa.getHand()->getID() << endl;
 	playa.useHand(NULL);*/
-	battle malta(&playa, 4, 1, 5);
+	battle malta(&playa, 4, 2, 5);
 	malta.battleInfo();
 }//    battle(Player* plaa, int numEnems, int enemyTyp, int nemyLvl)

@@ -21,7 +21,7 @@ Enemy* generateEnemy(int type, int lvl) {
     int maxHealth = 0;
     int baseStat = lvl;
     if (type == 1) {//pirates
-        randName = (rand() % 11) - 1;
+        randName = (rand() % 10);
         name = enemy1Names[randName];
         strength = 4;//base stats
         dexterity = 2;
@@ -36,7 +36,7 @@ Enemy* generateEnemy(int type, int lvl) {
         intelligence = intelligence + lvl;
     }
     else if (type == 2) {//corporate
-        randName = (rand() % 11) - 1;
+        randName = (rand() % 10);
         name = enemy2Names[randName];
         strength = 2;//base stats
         dexterity = 1;
@@ -52,7 +52,7 @@ Enemy* generateEnemy(int type, int lvl) {
         intelligence = intelligence + lvl;
     }
     else {//alien
-        randName = (rand() % 11) - 1;
+        randName = (rand() % 10);
         name = enemy3Names[randName];
         strength = 4;//base stats
         dexterity = 2;

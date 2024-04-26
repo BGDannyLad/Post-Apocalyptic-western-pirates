@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="Center.cpp" />
     <ClCompile Include="Corporate Dialog.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Outlaw Dialog.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
