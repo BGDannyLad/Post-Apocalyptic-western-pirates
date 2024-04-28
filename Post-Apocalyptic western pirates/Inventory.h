@@ -9,8 +9,8 @@ private:
 public:
     inventory()
     {
-        head = new item(nullptr, nullptr, 0, 1);
-        tail = new item(nullptr, nullptr, 0, 2);
+        head = new item(nullptr, nullptr, 0, 1, 5);//last number is value
+        tail = new item(nullptr, nullptr, 0, 2, 5);
         head->setNext(tail);
         tail->setLast(head);
         place = head;

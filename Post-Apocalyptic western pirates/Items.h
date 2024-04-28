@@ -7,12 +7,16 @@ private:
 	item* last;
 	int count;
 	int itemID;
+	int money;
+	string itemName;
 public:
-	item(item* nxt, item* lst, int cnt, int id) {
+	item(item* nxt, item* lst, int cnt, int id, int value, string name) {
 		next = nxt;
 		last = lst;
 		count = cnt;
 		itemID = id;
+		money = value;
+		itemName = name;
 	}
 	int getCount(){
 		return count;
@@ -43,6 +47,12 @@ public:
 			count = count + n;
 		}
 		
+	}
+	int getValue() {
+		return money;
+	}
+	void setValue(int val) {
+		money = val;
 	}
 	
 
