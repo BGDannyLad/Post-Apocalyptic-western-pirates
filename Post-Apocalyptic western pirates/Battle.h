@@ -189,7 +189,10 @@ public:
         playa = plaa;
         pushFront(new Enemy(playa->getStrength(), playa->getSmarts(), playa->getDexterity(), 0, playa->getMaxHealth(), playa->getName(), playa->getInventory()));
     }//int muscles, int intelligence, int dex, int typ, int maxH, string nme, inventory* inv
+    //be able to retreat, 
     void startBattleLoop() {
-        while (playa->getHealth() > 0 && )
+        while (playa->getHealth() > 0 && getNumEnemies() > 0) {
+
+        }
     }
 };
