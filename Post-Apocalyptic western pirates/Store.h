@@ -24,6 +24,7 @@ public:
 		availableItems[6]=Items("Basic Health Potion", 6);
 		availableItems[7]=Items("Medium Health Potion", 7);
 		availableItems[8]=Items("Max Health Potion", 8);
+		availableItems[9]=Items("Math Test", 9);
 	}
 	void setInflation(int infl) {
 		inflation = infl;
