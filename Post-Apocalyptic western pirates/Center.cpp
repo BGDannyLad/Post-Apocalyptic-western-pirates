@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "IntroScene.h"
 #include "Battle.h"
+#include "Outlaw Start.h"
 using namespace std;
 
 int main() {
@@ -30,4 +31,5 @@ int main() {
 	playa.useHand(NULL);*/
 	battle malta(&playa, 4, 2, 5);
 	malta.battleInfo();
+	run();
 }//    battle(Player* plaa, int numEnems, int enemyTyp, int nemyLvl)
