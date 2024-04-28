@@ -139,7 +139,7 @@
     <ClInclude Include="Store.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Center.cpp" />
+    <ClCompile Include="Testers Menu.cpp" />
     <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -80,7 +80,7 @@ public:
 	item* getHand() {
 		return playerInv->getCurrent();
 	}
-	void useHand(Player* target) {
+	void useHand(Enemy* target) {
 		int id = playerInv->getCurrent()->getID();
 		if (id == 1) {
 			std::cout << "Used dagger" << std::endl;
