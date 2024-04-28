@@ -95,7 +95,40 @@ public:
 			target->setHealth(target->getHealth() - damage);
 			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
 		}
-		else if (id == 2) { // health potion
+
+		else if (id == 2) {//Dried Fish
+			std::cout << "Used dried fish" << std::endl;
+			int randDamage = 7;
+			int damage = getStrength() + randDamage;
+			target->setHealth(target->getHealth() - damage);
+			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+		}
+
+		else if (id == 3) {//Cactus Sword
+			std::cout << "Used cactus sword" << std::endl;
+			int randDamage = 3 + rand() % 5;
+			int damage = getStrength() + randDamage;
+			target->setHealth(target->getHealth() - damage);
+			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+		}
+
+		else if (id == 4) {//Blunderbuss
+			std::cout << "Used blunderbuss" << std::endl;
+			int randDamage = 10;
+			int damage = getStrength() + randDamage;
+			target->setHealth(target->getHealth() - damage);
+			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+		}
+
+		else if (id == 5) {//Picture of Mom
+			std::cout << "Used photo of mother" << std::endl;
+			int randDamage = 6 + rand() % 5;
+			int damage = getStrength() + randDamage;
+			target->setHealth(target->getHealth() - damage);
+			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+		}
+
+		else if (id == 6) { // basic health potion 
 			std::cout << "Used basic health potion" << std::endl;
 			int randHealing = 1 + rand() % 3;
 			int hlth = randHealing;
@@ -108,7 +141,36 @@ public:
 				std::cout << "You healed for " << hlth << "damage." << std::endl;
 			}
 		}
+
+		else if (id == 7) { // medium health potion 
+			std::cout << "Used medium health potion" << std::endl;
+			int randHealing = 4 + rand() % 4;
+			int hlth = randHealing;
+			if ((getHealth() + hlth) > getMaxHealth()) {
+				setHealth(getMaxHealth());
+				std::cout << "You healed to max health." << std::endl;
+			}
+			else {
+				setHealth(getHealth() + hlth);
+				std::cout << "You healed for " << hlth << "damage." << std::endl;
+			}
+		}
+		
+		else if (id == 8) { // max health potion 
+			std::cout << "Used medium health potion" << std::endl;
+			int randHealing = 10 + rand() % 4;
+			int hlth = randHealing;
+			if ((getHealth() + hlth) > getMaxHealth()) {
+				setHealth(getMaxHealth());
+				std::cout << "You healed to max health." << std::endl;
+			}
+			else {
+				setHealth(getHealth() + hlth);
+				std::cout << "You healed for " << hlth << "damage." << std::endl;
+			}
+		}
 	}
+
 	inventory* getInventory() {
 		return playerInv;
 	}
