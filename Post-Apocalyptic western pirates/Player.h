@@ -3,7 +3,7 @@
 #include "Inventory.h"
 #include "Items.h"
 #include "Enemy.h"
-
+#include<cstdlib>
 
 class Player {
 private:
@@ -12,6 +12,7 @@ private:
 	string name;
 public:
 	Player(int muscles, int intelligence, int dex, int attractiveness, int mony, int maxH,string nme, inventory* inv) {
+		srand((unsigned)time(NULL));
 		health = maxH;
 		strength = muscles;
 		smarts = intelligence;
@@ -28,7 +29,12 @@ public:
 	string getName() {
 		return name;
 	}
-
+	int getMaxHealth() {
+		return maxHealth;
+	}
+	void setMaxHealth(int h) {
+		maxHealth = maxHealth + h;
+	}
 	void setHealth(int h) {
 		health = h;
 	}
@@ -80,13 +86,27 @@ public:
 	item* getHand() {
 		return playerInv->getCurrent();
 	}
-	void useHand(Player* target) {
+	void useHand(Enemy* target) {
 		int id = playerInv->getCurrent()->getID();
-		if (id == 1) {
-			std::cout << "Used dagger" << std::endl;
+		if (id == 1) {//half broken dagger
+			std::cout << "Used half broken dagger" << std::endl;
+			int randDamage = 1 + rand() % 3;
+			int damage = getStrength() + randDamage;
+			target->setHealth(target->getHealth() - damage);
+			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
 		}
-		else if (id == 2) {
-			std::cout << "used wiggly fish";
+		else if (id == 2) { // health potion
+			std::cout << "Used basic health potion" << std::endl;
+			int randHealing = 1 + rand() % 3;
+			int hlth = randHealing;
+			if ((getHealth() + hlth) > getMaxHealth()) {
+				setHealth(getMaxHealth());
+				std::cout << "You healed to max health." << std::endl;
+			}
+			else {
+				setHealth(getHealth() + hlth);
+				std::cout << "You healed for " << hlth << "damage." << std::endl;
+			}
 		}
 	}
 	inventory* getInventory() {
