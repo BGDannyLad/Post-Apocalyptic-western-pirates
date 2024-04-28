@@ -117,6 +117,8 @@ public:
         head = front;
         front->setLast(NULL);
         turn = front;
+        getFirst()->setLast(getTail());
+        getTail()->setNext(getFirst());
     }
     Enemy* deleteAt(Enemy* current) {
         turn = current;
@@ -126,6 +128,8 @@ public:
             tail = temp;
             tail->setNext(NULL);
             turn = tail;
+            getFirst()->setLast(getTail());
+            getTail()->setNext(getFirst());
             return oldTail;
         }
         else if (turn == head) {
@@ -134,6 +138,8 @@ public:
             temp->setLast(NULL);
             head = temp;
             turn = head;
+            getFirst()->setLast(getTail());
+            getTail()->setNext(getFirst());
             return oldHead;
         }
         else {
@@ -151,15 +157,21 @@ public:
         tail = nwTail;
         tail->setNext(NULL);
         turn = tail;
+        getFirst()->setLast(getTail());
+        getTail()->setNext(getFirst());
         return oldTail;
+        
     }
     Enemy* pop_front() {
         Enemy* oldHead = head;
         Enemy* nwHead = head->getNext();
         head = nwHead;
         nwHead->setLast(NULL);
-        return oldHead;
         turn = nwHead;
+        getFirst()->setLast(getTail());
+        getTail()->setNext(getFirst());
+        return oldHead;
+        
     }
     void battleInfo() {
         Enemy* gasgasgas = head;
@@ -188,8 +200,10 @@ public:
         }
         playa = plaa;
         pushFront(new Enemy(playa->getStrength(), playa->getSmarts(), playa->getDexterity(), 0, playa->getMaxHealth(), playa->getName(), playa->getInventory()));
+        getFirst()->setLast(getTail());
+        getTail()->setNext(getFirst());
     }//int muscles, int intelligence, int dex, int typ, int maxH, string nme, inventory* inv
-    //be able to retreat, 
+    //be able to retreat, use item, seduce enemy
     void playerTurn() {
 
     }
