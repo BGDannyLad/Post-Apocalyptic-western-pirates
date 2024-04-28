@@ -1,35 +1,78 @@
 #include <iostream>
-#include "Items.h"
-#include "Inventory.h"
-#include "Player.h"
-#include "Menu.h"
-#include "IntroScene.h"
-#include "Battle.h"
-#include "Outlaw Start.h"
 using namespace std;
 
+void returnToGame();
+void enterBattle();
+void manageInventory();
+void enterShop();
+void talkToSomeone();
+void quitGame();
+
 int main() {
-	inventory test;
-	//Player(int muscles, int intelligence, int dex, int attractiveness, int mony, int maxH, string nme, inventory * inv) {
-	Player playa(200, 1000000, 1000, 100, 999999, 20, "Jorje", &test);
-	/*if (openMenu(1) == 1) {
-		playa.getInventory()->addItem(1, 1);
-	}
-	else {
-		playa.getInventory()->addItem(2, 10);
-	}
-	CutScreen a;
-    a.intro1();
-    a.intro2();
-    a.intro3();
-    a.Shipwave();
-	playa.getInventory()->display();
-	cout << "Current hand: " << playa.getHand()->getID() << endl;
-	playa.useHand(NULL);
-	playa.changeHand(1);
-	cout << "Current hand: " << playa.getHand()->getID() << endl;
-	playa.useHand(NULL);*/
-	battle malta(&playa, 4, 2, 5);
-	malta.battleInfo();
-	run();
-}//    battle(Player* plaa, int numEnems, int enemyTyp, int nemyLvl)
+    int choice;
+
+    cout << "Welcome to Hell!\n"; 
+
+    do {
+        
+        cout << "\nMenu:\n"; 
+        cout << "1. Return to Game\n";
+        cout << "2. Enter Battle\n";
+        cout << "3. Manage Inventory\n";
+        cout << "4. Enter Shop\n";
+        cout << "5. Talk to Someone\n";
+        cout << "6. Quit Game\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            returnToGame();
+            break;
+        case 2:
+            enterBattle();
+            break;
+        case 3:
+            manageInventory();
+            break;
+        case 4:
+            enterShop();
+            break;
+        case 5:
+            talkToSomeone();
+            break;
+        case 6:
+            quitGame();
+            break;
+        default:
+            cout << "Invalid choice! Please enter a number between 1 and 6.\n";
+        }
+    } while (choice != 6);
+
+    return 0;
+}
+
+
+void returnToGame() {
+    cout << "Returning to game...\n";
+}
+
+void enterBattle() {
+    cout << "Entering battle...\n";
+}
+
+void manageInventory() {
+    cout << "Managing inventory...\n";
+}
+
+void enterShop() {
+    cout << "Entering shop...\n";
+}
+
+void talkToSomeone() {
+    cout << "Talking to someone...\n";
+}
+
+void quitGame() {
+    cout << "Quitting game...\n";
+}
