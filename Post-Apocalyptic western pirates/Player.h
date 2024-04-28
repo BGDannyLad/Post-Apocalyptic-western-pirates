@@ -158,16 +158,8 @@ public:
 		
 		else if (id == 8) { // max health potion 
 			std::cout << "Used medium health potion" << std::endl;
-			int randHealing = 10 + rand() % 4;
-			int hlth = randHealing;
-			if ((getHealth() + hlth) > getMaxHealth()) {
-				setHealth(getMaxHealth());
-				std::cout << "You healed to max health." << std::endl;
-			}
-			else {
-				setHealth(getHealth() + hlth);
-				std::cout << "You healed for " << hlth << "damage." << std::endl;
-			}
+
+			setHealth(getHealth() == getMaxHealth());
 		}
 	}
 
