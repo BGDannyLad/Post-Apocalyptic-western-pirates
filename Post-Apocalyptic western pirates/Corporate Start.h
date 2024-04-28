@@ -1,11 +1,11 @@
 //#pragma once
-//#include <iostream>
+//#include <iostream> 
 //#include <cstdlib> // For system("pause")
 //using namespace std;
 //
 //void fightYourBoss() {
 //    cout << "Your boss shouts at you for sympathizing with the aliens." << endl;
-//    cout << "1. Shout back at your boss." << endl;
+//    cout << "1. Shout back at your boss." << endl; 
 //    cout << "2. Keep silent." << endl;
 //    cout << "3. Deny it (lie)." << endl;
 //    int choice;
