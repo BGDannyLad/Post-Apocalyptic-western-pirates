@@ -167,6 +167,14 @@ public:
 			target->setHealth(target->getHealth() - damage);
 			std::cout << "You gave a math test to" << target->getName() << " for " << damage << "damage." << std::endl;
 		}
+
+		else if (id == 10) {//Love Potion
+			std::cout << "Used math test" << std::endl;
+			int damage = getSeduction();
+			target->setHealth(target->getHealth() - damage);
+			std::cout << "You attempt to seduce" << target->getName() << " for " << damage << "damage." << std::endl;
+			setSeduction(seduction + 1);
+		}
 	}
 
 	inventory* getInventory() {
