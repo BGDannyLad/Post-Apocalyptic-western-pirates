@@ -18,6 +18,12 @@ public:
 		money = value;
 		itemName = name;
 	}
+	string getItemName() {
+		return itemName;
+	}
+	void setItemName(string nme) {
+		itemName = nme;
+	}
 	int getCount(){
 		return count;
 	}
