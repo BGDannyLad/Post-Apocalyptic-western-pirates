@@ -174,12 +174,9 @@ public:
         
     }
     void battleInfo() {
-        Enemy* gasgasgas = head;
-        while (gasgasgas != NULL) {
+        Enemy* gasgasgas = head->getNext();
+        while (gasgasgas != head) {
             gasgasgas->displayStuff();
-            if (gasgasgas->getNext() == NULL) {
-                cout << "End of nodes at slot." << endl;
-            }
             gasgasgas = gasgasgas->getNext();
         }
     }
@@ -204,7 +201,9 @@ public:
         getTail()->setNext(getFirst());
     }//int muscles, int intelligence, int dex, int typ, int maxH, string nme, inventory* inv
     //be able to retreat, use item, seduce enemy
+    
     void playerTurn() {
+        battleInfo();
 
     }
     void turn(Enemy* anemony) {

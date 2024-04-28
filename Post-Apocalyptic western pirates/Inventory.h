@@ -49,7 +49,13 @@ public:
         item* gasgasgas = head;
         while (gasgasgas != nullptr) {
             if (gasgasgas->getCount() > 0) {
-                std::cout << "You have " << gasgasgas->getCount() << " of " << gasgasgas->getID() << std::endl;
+                if (gasgasgas == getCurrent()) {
+                    std::cout << "You have " << gasgasgas->getCount() << " of " << gasgasgas->getItemName() << ", id of " << gasgasgas->getID() << ", current hand." << std::endl;
+                }
+                else {
+                    std::cout << "You have " << gasgasgas->getCount() << " of " << gasgasgas->getItemName() << ", id of " << gasgasgas->getID() << std::endl;
+
+                }
             }
             gasgasgas = gasgasgas->getNext();
         }
