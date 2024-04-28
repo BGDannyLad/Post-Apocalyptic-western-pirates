@@ -93,7 +93,7 @@ public:
 			int randDamage = 1 + rand() % 3;
 			int damage = getStrength() + randDamage;
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+			std::cout << "You stabbed" << target->getName() << " for " << damage << "damage." << std::endl;
 		}
 
 		else if (id == 2) {//Dried Fish
@@ -101,31 +101,31 @@ public:
 			int randDamage = 7;
 			int damage = getStrength() + randDamage;
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+			std::cout << "You force fed" << target->getName() << " for " << damage << "damage." << std::endl;
 		}
 
 		else if (id == 3) {//Cactus Sword
 			std::cout << "Used cactus sword" << std::endl;
 			int randDamage = 3 + rand() % 5;
-			int damage = getStrength() + randDamage;
+			int damage = getDexterity() + randDamage;
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+			std::cout << "You poked" << target->getName() << " for " << damage << "damage." << std::endl;
 		}
 
 		else if (id == 4) {//Blunderbuss
 			std::cout << "Used blunderbuss" << std::endl;
 			int randDamage = 10;
-			int damage = getStrength() + randDamage;
+			int damage = getSmarts() + randDamage; 
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+			std::cout << "You aimed and shot " << target->getName() << " for " << damage << "damage." << std::endl;
 		}
 
 		else if (id == 5) {//Picture of Mom
 			std::cout << "Used photo of mother" << std::endl;
-			int randDamage = 6 + rand() % 5;
-			int damage = getStrength() + randDamage;
+			int randDamage = 6 + rand() % 4;
+			int damage = getSmarts() + getSeduction() + randDamage;
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You hit " << target->getName() << " for " << damage << "damage." << std::endl;
+			std::cout << "You showed a piture" << getName() << " a picture of their mom." << target->getName() << " for " << damage << "damage." << std::endl;
 		}
 
 		else if (id == 6) { // basic health potion 
@@ -134,7 +134,7 @@ public:
 			int hlth = randHealing;
 			if ((getHealth() + hlth) > getMaxHealth()) {
 				setHealth(getMaxHealth());
-				std::cout << "You healed to max health." << std::endl;
+				std::cout << "You healed." << std::endl;
 			}
 			else {
 				setHealth(getHealth() + hlth);
@@ -148,7 +148,7 @@ public:
 			int hlth = randHealing;
 			if ((getHealth() + hlth) > getMaxHealth()) {
 				setHealth(getMaxHealth());
-				std::cout << "You healed to max health." << std::endl;
+				std::cout << "You healed." << std::endl;
 			}
 			else {
 				setHealth(getHealth() + hlth);
@@ -157,9 +157,15 @@ public:
 		}
 		
 		else if (id == 8) { // max health potion 
-			std::cout << "Used medium health potion" << std::endl;
+			std::cout << "Used max health potion." << std::endl;
+			setHealth(getMaxHealth());
+		}
 
-			setHealth(getHealth() == getMaxHealth());
+		else if (id == 9) {//Math test
+			std::cout << "Used math test" << std::endl;
+			int damage = target->getSmarts();
+			target->setHealth(target->getHealth() - damage);
+			std::cout << "You gave a math test to" << target->getName() << " for " << damage << "damage." << std::endl;
 		}
 	}
 
