@@ -61,6 +61,19 @@ public:
         }
         
     }
+    void changeHand(int id) {
+        item* target = search(id);
+        if (target == nullptr) {
+            std::cout << "Invalid id." << std::endl;
+        }
+        else if (target->getCount() > 0) {
+            setCurrent(target);
+            std::cout << "Changed hand to " << target->getItemName() << std::endl;
+        }
+        else {
+            std::cout << "You have none of this item." << std::endl;
+        }
+    }
     ~inventory()
     {
         // Release memory allocated for each item in the inventory

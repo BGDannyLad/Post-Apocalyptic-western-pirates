@@ -9,14 +9,22 @@ private:
 	int itemID;
 	int money;
 	string itemName;
+	int type;
 public:
-	item(item* nxt, item* lst, int cnt, int id, int value, string name) {
+	item(item* nxt, item* lst, int cnt, int id, int value, int typ, string name) {
 		next = nxt;
 		last = lst;
 		count = cnt;
 		itemID = id;
 		money = value;
 		itemName = name;
+		type = typ;
+	}
+	void setType(int n) {
+		type = n;
+	}
+	int gettype() {
+		return type;
 	}
 	string getItemName() {
 		return itemName;

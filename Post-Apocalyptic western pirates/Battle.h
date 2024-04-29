@@ -6,6 +6,7 @@
 #include "Enemy.h"
 using namespace std;
 #include<cstdlib>
+#include <string.h>
 
 //strength, smarts, dexterity, type, maxHealth;
 Enemy* generateEnemy(int type, int lvl) {
@@ -175,9 +176,12 @@ public:
     }
     void battleInfo() {
         Enemy* gasgasgas = head->getNext();
+        int i = 0;
         while (gasgasgas != head) {
+            std::cout << "(" << i << ")";
             gasgasgas->displayStuff();
             gasgasgas = gasgasgas->getNext();
+            i++;
         }
     }
     void setNumEnemies(int anemone) {
@@ -202,9 +206,86 @@ public:
     }//int muscles, int intelligence, int dex, int typ, int maxH, string nme, inventory* inv
     //be able to retreat, use item, seduce enemy
     
-    void playerTurn() {
+    int playerTurn() {//returns 1 if retreated and failed, 2 if successfully retreated, 3 if seduce enemy and fail, 4 if succeed, 5 if use item.
         battleInfo();
+        std::cout << "Its your turn!" << std::endl;
+        int turn_taken = 0;
+        playa->getInventory()->display();
+        string i;
+        while (turn_taken == 0) {
+            i = "";
+            std::cout << "You can: \n(1) Use item in hand\n(2) Attempt to Seduce Enemy\n(3)Cowardly Retreat\n(4) View Inventory\n(5) Change Hand\nEnter choice: ";
+            std::cin >> i;
+            if (i == "1") {
+                if (playa->getHand()->gettype() == 1) {//for weapon
+                    int attack = 0;
+                    string target;
+                    while (attack == 0) {
+                        target = "";
+                        std::cout << "Target enemy number 1-" << numEnemies << ": ";
+                        cin >> target;
+                        if (strspn(target.c_str(), "0123456789") == target.size()) {//test for int
+                            int enemyIndex = stoi(target);//convert to int
+                            if (enemyIndex > 0 && enemyIndex < numEnemies + 1) {//if the number is an enemy
+                                Enemy* search = head;
+                                for (int i = 0; i < enemyIndex; i++) {//find the enemy
+                                    search = search->getNext();
+                                }
+                                playa->useHand(search);//attack enemy
+                                attack = 1;
+                                return 5;
+                            }
+                            else {
+                                std::cout << "Enter valid index plz.\n";
+                            }
 
+                        }
+                        else {
+                            std::cout << "Enter a number plz\n";
+                        }
+
+                    }
+                }
+                else if (playa->getHand()->gettype() == 2) {//for potion
+                    playa->useHand(NULL);
+                }
+            }
+            else if (i == "2") {
+
+            }
+            else if (i == "3") {
+                int escapeStat = playa->getDexterity();
+                int escape = 2;
+                for (int i = 0; i < numEnemies; i++) {
+                    int rng = rand() % 20 - escapeStat;
+                    if (rng > 8) {
+                        escape = 1;
+                    }
+                }
+                if (escape == 2) {
+                    std::cout << "Successfully retreated.\n";
+                }
+                else {
+                    std::cout << "You trip over a rogue spoon in the way of your retreat, rats." << std::endl;
+                }
+                return escape;
+
+            }
+            else if (i == "4") {
+                playa->getInventory()->display();
+            }
+            else if (i == "5") {
+                string id;
+                std::cout << "Enter item Id: ";
+                std::cin >> id;
+                if (strspn(id.c_str(), "0123456789") == id.size()) {
+                    playa->getInventory()->changeHand(stoi(id));
+                }
+            }
+            else {
+                cout << "nice try buddy.\n";
+            }
+        }
     }
     void turn(Enemy* anemony) {
         
