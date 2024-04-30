@@ -6,7 +6,7 @@ class store {
 private: 
 	inventory* stock;
 	int inflation;
-std::unordered_map<int, Item> availableItems; //map store available items with IDs
+std::unordered_map<int, Items> availableItems; //map store available items with IDs
 
 public:
 	store(int greed, inventory* stok) {

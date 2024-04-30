@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <string>
 class item {
 private:
 	item* next;
@@ -11,7 +11,7 @@ private:
 	string itemName;
 	int type;
 public:
-	item(item* nxt, item* lst, int cnt, int id, int value, int typ, string name) {
+	item(item* nxt, item* lst, int cnt, int id, int value, int typ, const std::string& name){
 		next = nxt;
 		last = lst;
 		count = cnt;
