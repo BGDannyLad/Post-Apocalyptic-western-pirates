@@ -45,12 +45,18 @@
     <ClInclude Include="Outlaw Start.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Corporate Start.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Center.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="Testers Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
