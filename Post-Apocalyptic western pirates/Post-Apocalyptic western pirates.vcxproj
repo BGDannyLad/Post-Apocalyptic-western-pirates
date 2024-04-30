@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Corporate Start.h" />
+    <ClInclude Include="DialogTree.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="IntroScene.h" />
