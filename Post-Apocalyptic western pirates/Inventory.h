@@ -9,11 +9,39 @@ private:
 public:
     inventory()
     {
-        head = new item(nullptr, nullptr, 0, 1, 5);//last number is value
-        tail = new item(nullptr, nullptr, 0, 2, 5);
-        head->setNext(tail);
-        tail->setLast(head);
-        place = head;
+        head = new item(nullptr, nullptr, 0, 1, 5, "Half Broken Dagger");//last number is value and second is ID
+ tail = new item(nullptr, nullptr, 0, 2, 5, "Dried Fish");
+ head->setNext(tail);
+ tail->setLast(head);
+ place = head;
+
+ item* item3 = new item(nullptr, nullptr, 0, 3, 5, "Cactus Sword");
+ item* item4 = new item(nullptr, nullptr, 0, 4, 5, "Blunderbuss");
+ item* item5 = new item(nullptr, nullptr, 0, 5, 5, "Picture of Mom");
+ item* item6 = new item(nullptr, nullptr, 0, 6, 5, "Basic Health Potion");
+ item* item7 = new item(nullptr, nullptr, 0, 7, 5, "Medium Health Potion");
+ item* item8 = new item(nullptr, nullptr, 0, 8, 5, "Max Health Potion");
+ item* item9 = new item(nullptr, nullptr, 0, 9, 5, "Math Test");
+
+ tail->setNext(item3);
+ item3->setLast(tail);
+ item3->setNext(item4);
+ item4->setLast(item3);
+ item4->setNext(item5);
+ item5->setLast(item4);
+ item5->setNext(item6);
+ item6->setLast(item5);
+ item6->setNext(item7);
+ item7->setLast(item6);
+ item7->setNext(item8);
+ item8->setLast(item7);
+ item8->setNext(item9);
+ item9->setLast(item8);
+ item9->setNext(head); 
+ head->setLast(item9);
+
+ head = item3;
+ tail = item9;
     }
     item* search(int key) {
         item* find = head;
