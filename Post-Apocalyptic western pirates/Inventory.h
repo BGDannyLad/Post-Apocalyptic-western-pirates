@@ -23,19 +23,19 @@ public:
         tail->setNext(new item(nullptr, nullptr, 0, 5, 5, 1, "picture of mom"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 6, 5, 1, "basic health potion"));
+        tail->setNext(new item(nullptr, nullptr, 0, 6, 5, 2, "basic health potion"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 7, 5, 1, "medium health potion"));
+        tail->setNext(new item(nullptr, nullptr, 0, 7, 5, 2, "medium health potion"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 8, 5, 1, "max health potion"));
+        tail->setNext(new item(nullptr, nullptr, 0, 8, 5, 2, "max health potion"));
         tail = tail->getNext();
 
         tail->setNext(new item(nullptr, nullptr, 0, 9, 5, 1, "math test"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 10, 5, 1, "love potion"));
+        tail->setNext(new item(nullptr, nullptr, 0, 10, 5, 2, "love potion"));
         tail = tail->getNext();
     
     }
