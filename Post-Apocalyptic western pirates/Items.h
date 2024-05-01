@@ -8,10 +8,10 @@ private:
 	int count;
 	int itemID;
 	int money;
-	string itemName;
+	std::string itemName;
 	int type;
 public:
-	item(item* nxt, item* lst, int cnt, int id, int value, int typ, const std::string& name){
+	item(item* nxt, item* lst, int cnt, int id, int value, int typ, std::string name) {
 		next = nxt;
 		last = lst;
 		count = cnt;
@@ -23,16 +23,16 @@ public:
 	void setType(int n) {
 		type = n;
 	}
-	int gettype() {
+	int getType() {
 		return type;
 	}
-	string getItemName() {
+	std::string getItemName() {
 		return itemName;
 	}
-	void setItemName(string nme) {
+	void setItemName(std::string nme) {
 		itemName = nme;
 	}
-	int getCount(){
+	int getCount() {
 		return count;
 	}
 	int getID() {
@@ -50,7 +50,7 @@ public:
 	void setLast(item* lst) {
 		last = lst;
 	}
-	void setCount(int n){
+	void setCount(int n) {
 		count = n;
 	}
 	void setID(int n) {
@@ -60,7 +60,7 @@ public:
 		if ((count + n) >= 0) {
 			count = count + n;
 		}
-		
+
 	}
 	int getValue() {
 		return money;
@@ -68,7 +68,7 @@ public:
 	void setValue(int val) {
 		money = val;
 	}
-	
+
 
 };
 //1 is basic dagger for now
