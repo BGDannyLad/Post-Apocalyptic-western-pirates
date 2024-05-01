@@ -142,6 +142,7 @@
     <ClInclude Include="Store.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="RunGame.cpp" />
     <ClCompile Include="Testers Menu.cpp" />
     <ClCompile Include="Game.cpp" />
   </ItemGroup>

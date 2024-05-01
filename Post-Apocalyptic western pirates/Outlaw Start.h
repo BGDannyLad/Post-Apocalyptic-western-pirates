@@ -224,7 +224,7 @@ public:
         }
     }
 
-    int run() {
+    int runpiratemsg() {
         string captainMsg1 = "Captain Fishboneslinkedtogetheronachainbeard: Ha ha me lad, its always a pleasure to see you my boy! \n *whispers in your ear* \n just between you and me, youre the only on in this scurvy crew of flea-infested limb missing greedy drunken wasts of water I can trust. \nRemember that.";
         string deny = "1. Why do they call you that?";
         string confess = "2. Aww, youre simply too much";

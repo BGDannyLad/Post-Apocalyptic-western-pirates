@@ -51,7 +51,7 @@ public:
             "\n                    WATER IS EVAPORATING IN THE HOT CLIMATE"
             "\n                       THEY LOOK TO THE STARS FOR HELP" << flush;
 
-        this_thread::sleep_for(chrono::seconds(15));
+        this_thread::sleep_for(chrono::seconds(5));
         system("CLS");
     };
 
@@ -100,7 +100,7 @@ public:
             "\n       MEN USED THE MAGICAL KRESTRUL TO CREATE POWERFUL TECHNOLOGIES"
             "\n  MEN FOUGHT OVER THE POWER OF THE KRESTRUL AND GOVERNMENTS COVETED THE WEALTH" << flush;
 
-        this_thread::sleep_for(chrono::seconds(15));
+        this_thread::sleep_for(chrono::seconds(5));
         system("CLS");
     };
 
@@ -135,25 +135,13 @@ public:
             "\n                       TWO FACTIONS WERE LEFT AFTER THE COLLAPSE"
             "\n                 THE GOVERNMENT CORPORATIONS AND THE DESERT PIRATES" << flush;
 
-        this_thread::sleep_for(chrono::seconds(15));
-        system("CLS");
-    };
-
-    void intro4() {
-
-        this_thread::sleep_for(chrono::seconds(6));
-        system("CLS");
-    };
-
-    void intro5() {
-
-        this_thread::sleep_for(chrono::seconds(6));
+        this_thread::sleep_for(chrono::seconds(5));
         system("CLS");
     };
 
     void Shipwave() {
         int count = 0;
-        while (count < 10) {
+        while (count < 2) {
 
             cout << "                                   ^ ~~~~~~^ ^~~"
                 "\n                                      :P^:^^^:!5Y~"

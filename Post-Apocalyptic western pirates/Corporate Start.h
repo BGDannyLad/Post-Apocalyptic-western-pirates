@@ -110,9 +110,6 @@ public:
             "\n                                          .~JP5PP~"
             "\n"
             "\n                                 YOU HAVE A CHOICE TO MAKE"
-            "\n                                 YOU HAVE A CHOICE TO MAKE"
-            "\n                                 YOU HAVE A CHOICE TO MAKE"
-            "\n                                 YOU HAVE A CHOICE TO MAKE"
             "\n                                 YOU HAVE A CHOICE TO MAKE" << flush;
         this_thread::sleep_for(chrono::seconds(5));
         system("CLS");
@@ -243,7 +240,7 @@ void beConfused() {
     }
 }
 
-int run() {
+int runcorpormsg() {
     string bossMsg1 = "Boss: Can I speak with you?";
     string bossMsg2 = "Boss: I've been informed that you have been stealing from us";
     string listen = "1. Listen";

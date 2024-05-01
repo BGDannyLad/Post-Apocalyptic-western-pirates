@@ -1,7 +1,11 @@
-#pragma once
-// Actual Menu.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include <iostream>
+
+// Enum to represent character types
+enum CharacterType {
+    None,
+    Corporate,
+    Outlaw
+};
 
 void startGame() {
     std::cout << "Starting the game." << std::endl;
@@ -34,33 +38,32 @@ void displayCharacterOptions() {
     std::cout << "2. Outlaw" << std::endl;
 }
 
-int openMenu(int startup) {
+CharacterType openMenu(int startup) {
     if (startup == 1) {
-        char choice, characterChoice;
+        char choice;
+        char characterChoice;
         do {
             displayMenu();
             std::cout << "Enter the number corresponding to your choice: ";
             std::cin >> choice;
-            
+
             switch (choice) {
             case '1':
                 startGame();
                 do {
-                    
                     displayCharacterOptions();
                     std::cout << "Enter the number corresponding to your character choice: ";
                     std::cin >> characterChoice;
                     switch (characterChoice) {
                     case '1':
                         corporateCharacter();
-                        return 1;
+                        return Corporate; // Return Corporate character type
                     case '2':
                         outlawCharacter();
-                        return 2;
+                        return Outlaw; // Return Outlaw character type
                     default:
                         std::cout << "Invalid character choice. Please enter 1 for Corporate or 2 for Outlaw." << std::endl;
                     }
-                    
                 } while (characterChoice != '2' && characterChoice != '1');
                 break;
             case '2':
@@ -71,7 +74,7 @@ int openMenu(int startup) {
             }
 
         } while (choice != '1');
-        return 0;
+        return None; // If no character type is chosen
     }
-   
+    return None; // If startup is not 1
 }
