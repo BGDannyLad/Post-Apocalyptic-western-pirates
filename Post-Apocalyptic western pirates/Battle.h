@@ -8,6 +8,7 @@ using namespace std;
 #include<cstdlib>
 #include <string.h>
 #include "Items.h"
+#include <stdlib.h>
 
 //strength, smarts, dexterity, type, maxHealth;
 Enemy* generateEnemy(int type, int lvl) {
@@ -177,12 +178,13 @@ public:
     }
     void battleInfo() {
         Enemy* gasgasgas = head->getNext();
-        int i = 0;
+        int i = 1;
         while (gasgasgas != head) {
             std::cout << "(" << i << ")";
             gasgasgas->displayStuff();
             gasgasgas = gasgasgas->getNext();
             i++;
+            std::cout << "\n\n";
         }
     }
     void setNumEnemies(int anemone) {
@@ -254,6 +256,7 @@ public:
                 }
                 else if (playa->getHand()->getType() == 2) {//for potion
                     playa->useHand(NULL);
+                    return 5;
                 }
             }
             else if (i == "2") {//seduce
@@ -273,10 +276,12 @@ public:
                             if (playa->attemptToSeduce(search) == 1) {//if succeeded
                                 std::cout << deleteAt(search)->getName() << " has left the battle smitten." << std::endl;
                                 numEnemies = numEnemies - 1;
+                               
                                 return 4;
                             }
                             else {//if failed
                                 std::cout << search->getName() << " has resisted your charms." << std::endl;
+                             
                                 return 3;
                             }
                         }
@@ -302,10 +307,12 @@ public:
                 }
                 if (escape == 2) {
                     std::cout << "Successfully retreated.\n";
+                    
                     return 2;
                 }
                 else {
                     std::cout << "You trip over a rogue spoon in the way of your retreat, rats." << std::endl;
+                    
                     return 1;
                 }
                 return escape;
@@ -327,39 +334,58 @@ public:
             }
         }
     }
-    //void enemyturn(Enemy* anemony) {
-    //    if (anemony->getHealth() <= .25 * anemony->getMaxHealth() && anemony->getInventory()->searchType(2) != NULL) {//If they are low and have heals
-    //        anemony->useItem(anemony->getInventory()->searchType(2), NULL);
-    //    }
-    //    else if (numEnemies == 1 && anemony->getHealth() < .5 * anemony->getMaxHealth()) {//if they are low and are the only enemy left
-    //        int escapeStat = anemony->getDexterity();
-    //        int escape = 2;
-    //        int rng = rand() % 20 - escapeStat + playa->getStrength();
-    //        if (rng > 8) {
-    //            escape = 1;
-    //        }
-    //        if (escape == 2) {
-    //            std::cout << anemony->getName() << " retreated.\n";
-    //            numEnemies = numEnemies - 1;
-    //        }
-    //        else {
-    //            std::cout << anemony->getName() << " attempted to retreat but you dragged them back" << std::endl;
-    //        }
-    //    }
-    //    else {
-    //        item* weapon = anemony->getInventory()->searchType(1);
-    //        anemony->useItem(weapon, playa);
-    //    }
-    //}
+    void enemyturn(Enemy* anemony) {
+        if (anemony->getHealth() <= .25 * anemony->getMaxHealth() && anemony->getInventory()->searchType(2) != NULL) {//If they are low and have heals
+            anemony->heal();
+        }
+        else if (numEnemies == 1 && anemony->getHealth() < .5 * anemony->getMaxHealth()) {//if they are low and are the only enemy left
+            int escapeStat = anemony->getDexterity();
+            int escape = 2;
+            int rng = rand() % 20 - escapeStat + playa->getStrength();
+            if (rng > 8) {
+                escape = 1;
+            }
+            if (escape == 2) {
+                std::cout << anemony->getName() << " retreated.\n";
+                numEnemies = numEnemies - 1;
+            }
+            else {
+                std::cout << anemony->getName() << " attempted to retreat but you dragged them back" << std::endl;
+            }
+        }
+        else {
+            //anemony->attack(playa);
+            if (anemony->getType() == 1) {
+                int randDamage = anemony->getStrength() + rand() % 5;
+                playa->setHealth(playa->getHealth() - randDamage);
+                std::cout << anemony->getName() << " sliced you with their cutlass for " << randDamage << " damage" << std::endl;
+            }
+            else if (anemony->getType() == 2) {
+                int randDamage = anemony->getSmarts() + rand() % 5;
+                playa->setHealth(playa->getHealth() - randDamage);
+                std::cout << anemony->getName() << " threw a book at you for " << randDamage << " damage" << std::endl;
+            }
+            else {
+                int randDamage = anemony->getDexterity() + rand() % 5;
+                playa->setHealth(playa->getHealth() - randDamage);
+                std::cout << anemony->getName() << " accidentally hurt you for " << randDamage << " damage" << std::endl;
+            }
+
+            
+        }
+    }
     void startBattleLoop() {
         while (playa->getHealth() > 0 && getNumEnemies() > 0) {
             if (turn->getType() == 0) { //if its the player's turn
-                playerTurn();
+                int returnVal = playerTurn();//returns 1 if retreated and failed, 2 if successfully retreated, 3 if seduce enemy and fail, 4 if succeed, 5 if use item.
+                if (returnVal == 2) {
+                    break;
+                }
             }
-            /*else {
+            else {
                 enemyturn(turn);
             }
-            turn = turn->getNext();*/
+            turn = turn->getNext();
         }
     }
 };

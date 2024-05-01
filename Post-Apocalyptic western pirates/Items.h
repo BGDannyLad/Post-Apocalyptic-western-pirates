@@ -5,16 +5,14 @@
 class item {
 private:
 	item* next;
-	item* last;
 	int count;
 	int itemID;
 	int money;
 	std::string itemName;
 	int type;
 public:
-	item(item* nxt, item* lst, int cnt, int id, int value, int typ, std::string name) {
+	item(item* nxt, int cnt, int id, int value, int typ, std::string name) {
 		next = nxt;
-		last = lst;
 		count = cnt;
 		itemID = id;
 		money = value;
@@ -44,12 +42,6 @@ public:
 	}
 	void setNext(item* nxt) {
 		next = nxt;
-	}
-	item* getLast() {
-		return last;
-	}
-	void setLast(item* lst) {
-		last = lst;
 	}
 	void setCount(int n) {
 		count = n;

@@ -9,34 +9,34 @@ private:
 public:
     inventory()
     {
-        head = new item(nullptr, nullptr, 0, 1, 5, 1, "Half broken dagger");//third number is the value
-        tail = new item(nullptr, nullptr, 0, 2, 5, 1, "Dried Fish");
+        head = new item(nullptr, 0, 1, 5, 1, "Half broken dagger");//third number is the value
+        tail = new item(nullptr, 0, 2, 5, 1, "Dried Fish");
         head->setNext(tail);
-        tail->setLast(head);
         place = head;
-        tail->setNext(new item(nullptr, nullptr, 0, 3, 5, 1, "Cactus Sword"));
+        tail->setNext(new item(nullptr, 0, 3, 5, 1, "Cactus Sword"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 4, 5, 1, "Blunderbuss"));
+        tail->setNext(new item(nullptr, 0, 4, 5, 1, "Blunderbuss"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 5, 5, 1, "Picture of Mom"));
+        tail->setNext(new item(nullptr, 0, 5, 5, 1, "Picture of Mom"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 6, 5, 2, "Basic Health Potion"));
+        tail->setNext(new item(nullptr, 0, 6, 5, 2, "Basic Health Potion"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 7, 5, 2, "Medium Health Potion"));
+        tail->setNext(new item( nullptr, 0, 7, 5, 2, "Medium Health Potion"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 8, 5, 2, "Max Health Potion"));
+        tail->setNext(new item( nullptr, 0, 8, 5, 2, "Max Health Potion"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 9, 5, 1, "Math Test"));
+        tail->setNext(new item( nullptr, 0, 9, 5, 1, "Math Test"));
         tail = tail->getNext();
 
-        tail->setNext(new item(nullptr, nullptr, 0, 10, 5, 2, "Love Potion"));
+        tail->setNext(new item(nullptr, 0, 10, 5, 2, "Love Potion"));
         tail = tail->getNext();
+        tail->setNext(NULL);
 
     }
     item* search(int key) {

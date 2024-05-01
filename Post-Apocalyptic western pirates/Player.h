@@ -93,7 +93,7 @@ public:
 			int randDamage = 1 + rand() % 3;
 			int damage = getStrength() + randDamage;
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You stabbed" << target->getName() << " for " << damage << " damage." << std::endl;
+			std::cout << "You stabbed " << target->getName() << " for " << damage << " damage." << std::endl;
 		}
 
 		else if (id == 2) {//Dried Fish
@@ -109,7 +109,7 @@ public:
 			int randDamage = 3 + rand() % 5;
 			int damage = getDexterity() + randDamage;
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You poked" << target->getName() << " for " << damage << " damage." << std::endl;
+			std::cout << "You poked " << target->getName() << " for " << damage << " damage." << std::endl;
 		}
 
 		else if (id == 4) {//Blunderbuss
@@ -125,7 +125,7 @@ public:
 			int randDamage = 6 + rand() % 4;
 			int damage = getSmarts() + getSeduction() + randDamage;
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You showed a picture" << getName() << " a picture of their mom." << target->getName() << " for " << damage << " damage." << std::endl;
+			std::cout << "You showed " << target->getName() << " a picture of their mom for " << damage << " damage." << std::endl;
 		}
 
 		else if (id == 6) { // basic health potion
@@ -153,7 +153,7 @@ public:
 			}
 			else {
 				setHealth(getHealth() + hlth);
-				std::cout << "You healed for " << hlth << "damage." << std::endl;
+				std::cout << "You healed for " << hlth << " damage." << std::endl;
 			}
 			getInventory()->addItem(7, -1);
 		}
@@ -168,14 +168,14 @@ public:
 			std::cout << "Used math test" << std::endl;
 			int damage = target->getSmarts();
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You gave a math test to" << target->getName() << " for " << damage << "damage." << std::endl;
+			std::cout << "You gave a math test to " << target->getName() << " for " << damage << " damage." << std::endl;
 		}
 
 		else if (id == 10) {//Love Potion
 			std::cout << "Used math test" << std::endl;
 			int damage = getSeduction();
 			target->setHealth(target->getHealth() - damage);
-			std::cout << "You attempt to seduce" << target->getName() << " for " << damage << "damage." << std::endl;
+			std::cout << "You attempt to seduce " << target->getName() << " for " << damage << " damage." << std::endl;
 			setSeduction(seduction + 1);
 		}
 	}
@@ -206,41 +206,41 @@ public:
 		const char* alienResponseFail[5] = { "Na man, im good", "Yeah we do that sometimes. But na, im kinda chillin over here", "Oh, sorry dude it didnt work on me", "Dude you should like wright books and stuff, but im good for right now.", "Bro thats too philosophical for me man" }; //alien
 		int randDialog = rand() % 5;
 		if (target->getType() == 1) {
-			std::cout << getName() << ": " << seductionPirate[randDialog] << std::endl;
-			std::cout << target->getName() << ": " << pirateResponse[randDialog] << std::endl;
-			std::cout << getName() << ": " << seductionPirate2[randDialog] << std::endl;
+			std::cout << getName() << ": " << seductionPirate[randDialog] << "\n" <<std::endl;
+			std::cout << target->getName() << ": " << pirateResponse[randDialog] << "\n" << std::endl;
+			std::cout << getName() << ": " << seductionPirate2[randDialog] << "\n" << std::endl;
 			if (enemyResistance > targetSed) {//fail
-				std::cout << target->getName() << ": " << pirateResponseFail[randDialog] << std::endl;
+				std::cout << target->getName() << ": " << pirateResponseFail[randDialog] << "\n" << std::endl;
 				return 0;
 			}
 			else {
-				std::cout << target->getName() << ": " << pirateResponseSucceed[randDialog] << std::endl;
+				std::cout << target->getName() << ": " << pirateResponseSucceed[randDialog] << "\n" << std::endl;
 				return 1;
 			}
 		}
 		else if (target->getType() == 2) {//corporate
-			std::cout << getName() << ": " << seductionCorpo[randDialog] << std::endl;
-			std::cout << target->getName() << ": " << corpoResponse[randDialog] << std::endl;
-			std::cout << getName() << ": " << seductionCorpo2[randDialog] << std::endl;
+			std::cout << getName() << ": " << seductionCorpo[randDialog] << "\n" << std::endl;
+			std::cout << target->getName() << ": " << corpoResponse[randDialog] << "\n" << std::endl;
+			std::cout << getName() << ": " << seductionCorpo2[randDialog] << "\n" << std::endl;
 			if (enemyResistance > targetSed) {//fail
-				std::cout << target->getName() << ": " << corpoResponseFail[randDialog] << std::endl;
+				std::cout << target->getName() << ": " << corpoResponseFail[randDialog] << "\n" << std::endl;
 				return 0;
 			}
 			else {
-				std::cout << target->getName() << ": " << corpoResponseSucceed[randDialog] << std::endl;
+				std::cout << target->getName() << ": " << corpoResponseSucceed[randDialog] << "\n" << std::endl;
 				return 1;
 			}
 		}
 		else if (target->getType() == 3) {//alien
-			std::cout << getName() << ": " << seductionAlien[randDialog] << std::endl;
-			std::cout << target->getName() << ": " << alienResponse[randDialog] << std::endl;
-			std::cout << getName() << ": " << seductionAlien2[randDialog] << std::endl;
+			std::cout << getName() << ": " << seductionAlien[randDialog] << "\n" << std::endl;
+			std::cout << target->getName() << ": " << alienResponse[randDialog] << "\n" << std::endl;
+			std::cout << getName() << ": " << seductionAlien2[randDialog] << "\n" << std::endl;
 			if (enemyResistance > targetSed) {//fail
-				std::cout << target->getName() << ": " << alienResponseFail[randDialog] << std::endl;
+				std::cout << target->getName() << ": " << alienResponseFail[randDialog] << "\n" << std::endl;
 				return 0;
 			}
 			else {
-				std::cout << target->getName() << ": " << alienResponseSucceed[randDialog] << std::endl;
+				std::cout << target->getName() << ": " << alienResponseSucceed[randDialog] << "\n" << std::endl;
 				return 1;
 			}
 		}
